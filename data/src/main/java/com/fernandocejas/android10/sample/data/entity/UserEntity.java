@@ -18,7 +18,7 @@ package com.fernandocejas.android10.sample.data.entity;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * User Entity used in the data layer.
+ * User Entity used in the data layer.(android Lib)
  */
 public class UserEntity {
 

@@ -16,7 +16,7 @@
 package com.fernandocejas.android10.sample.domain;
 
 /**
- * Class that represents a User in the domain layer.
+ * Class that represents a User in the domain layer.  (java lib)+ app module
  */
 public class User {
 
