@@ -5,30 +5,47 @@ import android.graphics.drawable.Drawable;
 
 import com.example.coreDomain.DisplayEntry;
 import com.example.interactor.ReturnResult;
-import com.example.xiaomao.net.FakeAPIconnection;
-import com.example.xiaomao.net.RestApi;
 
 import java.util.List;
 
 import rx.Observable;
+import rx.Subscriber;
 
 /**
- * Created by Administrator on 16-3-18.
+ * Created by nanyi545 on 16-3-18.
+ *
+ * DataStore
  */
 public class RemoteDataStore implements DataStore {
 
+    // constructor : pass in fake net-api
     public RemoteDataStore(Context appContext){
         this.appContext=appContext;
-        this.restApi=new FakeAPIconnection(this.appContext);
+        this.fetcher=new DataFetcherImpl(this.appContext);
     }
 
+    // constructor : pass in real net-api
+    public RemoteDataStore(Context appContext,DataFetcher fetcher){
+        this.appContext=appContext;
+        this.fetcher=fetcher;
+    }
+
+
     private final Context appContext;
-    private final RestApi restApi;
+    private final DataFetcher fetcher;
 
 
     @Override
     public Observable<List<DisplayEntry>> getEntriesObs() {
-        return null;
+
+        Observable<List<DisplayEntry>> observable=Observable.create(new Observable.OnSubscribe<List<DisplayEntry>>(){
+            @Override
+            public void call(Subscriber<? super List<DisplayEntry>> subscriber) {
+                subscriber.onNext(fetcher.getEntries());
+            }
+        });
+        return observable;
+
     }
 
     @Override

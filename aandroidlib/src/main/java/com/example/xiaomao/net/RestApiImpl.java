@@ -2,8 +2,6 @@ package com.example.xiaomao.net;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 import com.example.coreDomain.DisplayEntry;
 import com.example.interactor.ReturnResult;
@@ -15,6 +13,8 @@ import java.util.List;
  * Created by Administrator on 16-3-18.
  */
 public class RestApiImpl extends RestApiAdapter {
+
+
 
     private final Context appContext;
     private final DispEntryJsonMapper jsonMapper=new DispEntryJsonMapper();
@@ -41,19 +41,6 @@ public class RestApiImpl extends RestApiAdapter {
     }
 
 
-    /**
-     *  Checks if the device has any active internet connection.------> not here
-     *
-     *  @return true device with internet connection, otherwise false.
-     */
-    private boolean isThereInternetConnection() {
-        boolean isConnected;
-        ConnectivityManager connectivityManager =
-                (ConnectivityManager) this.appContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        isConnected = (networkInfo != null && networkInfo.isConnectedOrConnecting());
-        return isConnected;
-    }
 
 
     @Override
