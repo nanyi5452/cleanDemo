@@ -4,7 +4,16 @@ import android.content.Context;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
+import com.example.coreDomain.DisplayEntry;
 import com.example.xiaomao.repository.DataFetcherImpl;
+import com.example.xiaomao.repository.DataStore;
+import com.example.xiaomao.repository.RemoteDataStore;
+import com.example.xiaomao.utils.subscriber.DefaultSubscriber;
+
+import java.util.List;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Administrator on 16-3-18.
@@ -37,6 +46,21 @@ public class DataFetcherTest extends AndroidTestCase {
         Log.i(tag, fetcher.getEntries().toString());
         long t4=System.nanoTime();
         Log.i(tag,"elapsed time in milli-sec:"+(t4-t3)/1000000f);
+    }
+
+
+    // test--> subscribe----> doesn't work ---> why,   works in real activity
+    public void testDataStore(){
+        Context context=getContext().getApplicationContext();
+        DataStore remote=new RemoteDataStore(context);
+        remote.getEntriesObs().subscribeOn(Schedulers.io()) // 指定 subscribe() 发生在 IO 线程
+                .observeOn(AndroidSchedulers.mainThread()) .subscribe(new DefaultSubscriber<List<DisplayEntry>>(){
+            @Override
+            public void onNext(List<DisplayEntry> displayEntries) {
+                Log.i("AAA",""+displayEntries.toString());
+            }
+        });
+
 
     }
 

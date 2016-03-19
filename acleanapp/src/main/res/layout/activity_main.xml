@@ -12,5 +12,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/tv1"
         android:text="Hello World!" />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/iv1"
+        android:layout_below="@id/tv1"
+        android:scaleType="fitCenter"
+        />
+
 </RelativeLayout>

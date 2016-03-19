@@ -15,6 +15,8 @@
  */
 package com.fernandocejas.android10.sample.data.entity.mapper;
 
+import android.util.Log;
+
 import com.fernandocejas.android10.sample.data.entity.UserEntity;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -43,6 +45,7 @@ public class UserEntityJsonMapper {
    * @throws com.google.gson.JsonSyntaxException if the json string is not a valid json structure.
    */
   public UserEntity transformUserEntity(String userJsonResponse) throws JsonSyntaxException {
+    Log.i("AAA","transformUserEntity:"+Thread.currentThread().getName());
     try {
       Type userEntityType = new TypeToken<UserEntity>() {}.getType();
       UserEntity userEntity = this.gson.fromJson(userJsonResponse, userEntityType);
@@ -62,7 +65,7 @@ public class UserEntityJsonMapper {
    */
   public List<UserEntity> transformUserEntityCollection(String userListJsonResponse)
       throws JsonSyntaxException {
-
+    Log.i("AAA","transformUserEntityCollection:"+Thread.currentThread().getName());
     List<UserEntity> userEntityCollection;
     try {
       Type listOfUserEntityType = new TypeToken<List<UserEntity>>() {}.getType();

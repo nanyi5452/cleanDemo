@@ -21,7 +21,7 @@ public interface DataStore {
 
     Observable<DisplayEntry> getEntryObs(int entryId);
 
-    Observable<ReturnResult> deleteEntryObs(int entryId);
+    Observable<? extends ReturnResult> deleteEntryObs(int entryId);
 
     Observable<Drawable> getImageFromURL(String URL);
 

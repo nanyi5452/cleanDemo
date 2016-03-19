@@ -2,8 +2,6 @@ package com.example.xiaomao.repository;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 import com.example.coreDomain.DisplayEntry;
 import com.example.interactor.ReturnResult;
@@ -35,19 +33,6 @@ public class DataFetcherImpl implements DataFetcher {
         this.restApi=restApi;
     }
 
-    /**
-     *  Checks if the device has any active internet connection.------> not here
-     *
-     *  @return true device with internet connection, otherwise false.
-     */
-    private boolean isThereInternetConnection() {
-        boolean isConnected;
-        ConnectivityManager connectivityManager =
-                (ConnectivityManager) this.appContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        isConnected = (networkInfo != null && networkInfo.isConnectedOrConnecting());
-        return isConnected;
-    }
 
 
 

@@ -18,12 +18,16 @@ package com.fernandocejas.android10.sample.data.net;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
+
 import com.fernandocejas.android10.sample.data.entity.UserEntity;
 import com.fernandocejas.android10.sample.data.entity.mapper.UserEntityJsonMapper;
 import com.fernandocejas.android10.sample.data.exception.NetworkConnectionException;
 import com.fernandocejas.frodo.annotation.RxLogObservable;
+
 import java.net.MalformedURLException;
 import java.util.List;
+
 import rx.Observable;
 
 /**
@@ -51,6 +55,7 @@ public class RestApiImpl implements RestApi {
   @RxLogObservable
   @Override public Observable<List<UserEntity>> userEntityList() {
     return Observable.create(subscriber -> {
+      Log.i("AAA","INSIDE CALL:"+Thread.currentThread().getName());  // inside call---> same thread
       if (isThereInternetConnection()) {
         try {
           String responseUserEntities = getUserEntitiesFromApi();
@@ -92,6 +97,7 @@ public class RestApiImpl implements RestApi {
   }
 
   private String getUserEntitiesFromApi() throws MalformedURLException {
+    Log.i("AAA","getUserEntitiesFromApi:"+Thread.currentThread().getName());
     return ApiConnection.createGET(RestApi.API_URL_GET_USER_LIST).requestSyncCall();
   }
 

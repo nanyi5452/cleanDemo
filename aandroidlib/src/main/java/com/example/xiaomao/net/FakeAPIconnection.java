@@ -69,14 +69,28 @@ public class FakeAPIconnection implements RestApi{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        ReturnResult ret=new DeleteEntryUseCase.DeleteResult(false,list);
+
+        DisplayEntry temp=null;
+        boolean deleteSuccess=false;
+        Iterator<DisplayEntry> iterator=list.iterator();
+        while (iterator.hasNext()){
+            temp=iterator.next();
+            if (temp.getEntryId()==entryId) break;
+        }
+
+        if (temp!=null) {
+            list.remove(temp);
+            deleteSuccess=true;
+        }
+
+        ReturnResult ret=new DeleteEntryUseCase.DeleteResult(deleteSuccess,list);
         return ret;
     }
 
     @Override
     public Drawable getImageFromURL(String imageURL) {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
