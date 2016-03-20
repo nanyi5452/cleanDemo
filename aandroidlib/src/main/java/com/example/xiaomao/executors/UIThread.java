@@ -13,13 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.executor;
+package com.example.xiaomao.executors;
 
-import java.util.concurrent.Executor;
+import com.example.executor.PostExecutionThread;
+
+import rx.Scheduler;
+import rx.android.schedulers.AndroidSchedulers;
 
 /**
- * Executor implementation can be based on different frameworks or techniques of asynchronous
- * execution, but every implementation will execute the
- * UseCase out of the UI thread.
+ * MainThread (UI Thread) implementation based on a {@link Scheduler}
+ * which will execute actions on the Android UI thread
  */
-public interface ThreadExecutor extends Executor {}
+public class UIThread implements PostExecutionThread {
+
+  public UIThread() {}
+
+  @Override public Scheduler getScheduler() {
+    return AndroidSchedulers.mainThread();
+  }
+}

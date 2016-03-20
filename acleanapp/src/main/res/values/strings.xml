@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">AcleanApp-SOLID架构测试</string>
+    <string name="app_name">clean App 架构测试</string>
+    <string name="view_list_activity_name">显示图片列表</string>
 </resources>

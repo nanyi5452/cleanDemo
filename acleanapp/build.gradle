@@ -36,4 +36,9 @@ dependencies {
 
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:1.1.0'
+
+
+    compile('com.lsjwzh:materialloadingprogressbar:0.5.8-RELEASE')  // loading
+    compile 'com.android.support:recyclerview-v7:23.+'
+
 }

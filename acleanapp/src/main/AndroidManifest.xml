@@ -18,6 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.viewlist1.ViewListActivity"
+            android:label="@string/view_list_activity_name"
+            ></activity>
     </application>
 
 </manifest>

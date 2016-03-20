@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import com.example.coreDomain.DisplayEntry;
-import com.example.interactor.ReturnResult;
+import com.example.xiaomao.interactor.ReturnResult;
 import com.example.xiaomao.utils.mapper.DispEntryJsonMapper;
 
 import java.util.List;

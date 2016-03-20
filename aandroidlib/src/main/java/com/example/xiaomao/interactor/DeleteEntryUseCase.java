@@ -1,8 +1,9 @@
-package com.example.interactor;
+package com.example.xiaomao.interactor;
 
 import com.example.coreDomain.DisplayEntry;
 import com.example.executor.PostExecutionThread;
 import com.example.executor.ThreadExecutor;
+import com.example.xiaomao.repository.DataStore;
 
 import java.util.List;
 
@@ -13,7 +14,10 @@ import rx.Observable;
  */
 public class DeleteEntryUseCase extends UseCase {
 
+    private final DataStore mDataStore;
+    private final int deleteEntryId;
 
+    // inner class... return result from DeleteEntryUseCase
     public static class DeleteResult implements ReturnResult{
         private final boolean deleteSuccess;
         private final List<DisplayEntry> newListAfterDelete;
@@ -29,12 +33,14 @@ public class DeleteEntryUseCase extends UseCase {
     }
 
     public DeleteEntryUseCase(ThreadExecutor threadExecutor,
-                              PostExecutionThread postExecutionThread){
+                              PostExecutionThread postExecutionThread,DataStore mDataStore,int deleteEntryId){
         super(threadExecutor,postExecutionThread);
+        this.mDataStore=mDataStore;
+        this.deleteEntryId=deleteEntryId;
     }
 
     @Override
     protected Observable buildUseCaseObservable() {
-        return null;
+        return mDataStore.deleteEntryObs(deleteEntryId);
     }
 }

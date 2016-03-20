@@ -3,4 +3,21 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    <color name="Red50">#fde0dc</color>
+    <color name="Red100">#f9bdbb</color>
+    <color name="Red200">#f69988</color>
+    <color name="Red300">#f36c60</color>
+    <color name="Red400">#e84e40</color>
+    <color name="Red500">#e51c23</color>
+    <color name="Red600">#dd191d</color>
+    <color name="Red700">#d01716</color>
+    <color name="Red800">#c41411</color>
+    <color name="Red900">#b0120a</color>
+    <color name="RedA100">#ff7997</color>
+    <color name="RedA200">#ff5177</color>
+    <color name="RedA400">#ff2d6f</color>
+    <color name="RedA700">#e00032</color>
+
 </resources>

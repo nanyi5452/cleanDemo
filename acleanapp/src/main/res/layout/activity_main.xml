@@ -9,11 +9,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.xiaomao.acleanapp.MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/b1"
+        android:text="view list by RecyclerView"
+        android:onClick="jumpRV"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/b1"
         android:id="@+id/tv1"
-        android:text="Hello World!" />
+        android:text="Hello Uncle Bob!" />
 
     <ImageView
         android:layout_width="200dp"

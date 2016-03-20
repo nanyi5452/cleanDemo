@@ -1,4 +1,4 @@
-package com.example.interactor;
+package com.example.xiaomao.interactor;
 
 /**
  * Created by Administrator on 16-3-18.

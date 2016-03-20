@@ -3,7 +3,7 @@ package com.example.xiaomao.net;
 import android.graphics.drawable.Drawable;
 
 import com.example.coreDomain.DisplayEntry;
-import com.example.interactor.ReturnResult;
+import com.example.xiaomao.interactor.ReturnResult;
 
 import java.util.List;
 

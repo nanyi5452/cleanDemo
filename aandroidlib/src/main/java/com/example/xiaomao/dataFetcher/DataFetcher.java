@@ -1,4 +1,4 @@
-package com.example.xiaomao.repository;
+package com.example.xiaomao.dataFetcher;
 
 import com.example.coreDomain.DisplayEntry;
 import com.example.xiaomao.net.RestApi;
@@ -10,7 +10,10 @@ import java.util.List;
  *
  * DataFetcher interface defines operations to fetch data from  networkApi + Cache
  *
- * it happens to have the same interface as {@link RestApi}
+ *  this level is responsible to fetch data form different sources(networkApi or Cache e.g.)
+ *  and to reorganize data for different use cases.
+ *
+ * the Repositories use DataFetchers to get data.
  *
  */
 public interface DataFetcher extends RestApi{

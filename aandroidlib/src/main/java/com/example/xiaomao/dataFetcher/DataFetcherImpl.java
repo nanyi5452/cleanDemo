@@ -1,10 +1,10 @@
-package com.example.xiaomao.repository;
+package com.example.xiaomao.dataFetcher;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import com.example.coreDomain.DisplayEntry;
-import com.example.interactor.ReturnResult;
+import com.example.xiaomao.interactor.ReturnResult;
 import com.example.xiaomao.cache.Cache;
 import com.example.xiaomao.cache.DispEntriesMemoryCache;
 import com.example.xiaomao.net.RestApi;
