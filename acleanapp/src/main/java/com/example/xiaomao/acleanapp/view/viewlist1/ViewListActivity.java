@@ -11,6 +11,7 @@ import android.view.View;
 import com.example.coreDomain.DisplayEntry;
 import com.example.xiaomao.acleanapp.R;
 import com.example.xiaomao.acleanapp.view.EntryListView;
+import com.example.xiaomao.acleanapp.view.viewEntry1.EntryActivity;
 import com.example.xiaomao.executors.JobExecutor;
 import com.example.xiaomao.executors.UIThread;
 import com.example.xiaomao.interactor.GetEntriesUseCase;
@@ -44,12 +45,21 @@ public class ViewListActivity extends AppCompatActivity {
         me=this;
         setContentView(R.layout.activity_view_list);
 
+        initViews();
+
+        DataStore remote=new RemoteDataStore(getApplicationContext());
+        usecase=new GetEntriesUseCase(new JobExecutor(),new UIThread(),remote);
+
+        presenter=new ViewListPresenter(usecase);
+        presenter.setView(entriesView);
+        presenter.initialize();
+    }
+
+    private void initViews() {
         progressBar= (CircleProgressBar) findViewById(R.id.progressBar);
         entriesRv= (RecyclerView) findViewById(R.id.recycler_entries);
-
         entriesRv.setHasFixedSize(true);
         entriesRv.setLayoutManager(new LinearLayoutManager(me));
-
         entriesView=new EntryListView(){
             @Override
             public void showLoading() {
@@ -79,6 +89,14 @@ public class ViewListActivity extends AppCompatActivity {
             public void renderList(GetEntriesUseCase.EntriesResult result) {
                 if (adapter==null){
                     adapter=new EntriesRVadapter(result);
+
+                    adapter.setOnItemClickListener(new EntriesRVadapter.OnItemClickListener() {
+                        @Override
+                        public void onEntryClicked(DisplayEntry entry) {
+                            EntryActivity.jump(me,entry.getEntryId());
+                        }
+                    });
+
                     entriesRv.setAdapter(adapter);
                 }
                 else {
@@ -91,12 +109,5 @@ public class ViewListActivity extends AppCompatActivity {
             public void viewEntry(DisplayEntry entry) {
             }
         };
-
-        DataStore remote=new RemoteDataStore(getApplicationContext());
-        usecase=new GetEntriesUseCase(new JobExecutor(),new UIThread(),remote);
-
-        presenter=new ViewListPresenter(usecase);
-        presenter.setView(entriesView);
-        presenter.initialize();
     }
 }
