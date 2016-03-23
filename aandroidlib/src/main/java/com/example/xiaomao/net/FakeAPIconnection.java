@@ -50,7 +50,7 @@ public class FakeAPIconnection implements RestApi {
     @Override
     public List<DisplayEntry> getEntries() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -61,7 +61,7 @@ public class FakeAPIconnection implements RestApi {
     @Override
     public DisplayEntry getEntry(int entryId) {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -79,7 +79,7 @@ public class FakeAPIconnection implements RestApi {
     @Override
     public ReturnResult deleteEntry(int entryId) {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -108,7 +108,7 @@ public class FakeAPIconnection implements RestApi {
     @Override
     public Drawable getImageFromURL(String imageURL) {
         try {
-            Thread.sleep(600);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -27,7 +27,7 @@ public class ImageDiskCache implements Cache<String,Drawable> {
 
 
     private Context context;
-    private long maxSize=1024*1024L;  //in bytes
+    private long maxSize=8*1024*1024L;  //in bytes
     Resources res;
 
     private DiskLruImageCache cache;
@@ -40,7 +40,7 @@ public class ImageDiskCache implements Cache<String,Drawable> {
 
     @Override
     public Drawable get(String key) {
-        String temp_key=key.replaceAll(".","_");
+        String temp_key=key.replace(".","_");  // "." can bot be contained in the key
         return bitmap2drawable(cache.getBitmap(temp_key));
     }
 
@@ -56,13 +56,13 @@ public class ImageDiskCache implements Cache<String,Drawable> {
 
     @Override
     public void put(String key, Drawable obj) {
-        String temp_key=key.replaceAll(".","_");
+        String temp_key=key.replace(".","_");
         cache.put(temp_key,drawable2bitmap(obj));
     }
 
     @Override
     public boolean isCached(String key) {
-        String temp_key=key.replaceAll(".","_");
+        String temp_key=key.replace(".","_");
         return cache.containsKey(temp_key);
     }
 

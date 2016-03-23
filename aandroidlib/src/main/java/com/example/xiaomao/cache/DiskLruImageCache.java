@@ -23,7 +23,7 @@ public class DiskLruImageCache {
     private Bitmap.CompressFormat mCompressFormat = Bitmap.CompressFormat.JPEG;
     private int mCompressQuality = 100;
     private static final int APP_VERSION = 1;
-    private static final int VALUE_COUNT = 1;  //???
+    private static final int VALUE_COUNT = 1;  //???啥意思
 
     private static final int IO_BUFFER_SIZE=8*1024;
 
@@ -38,7 +38,7 @@ public class DiskLruImageCache {
         }
     }
 
-
+    /** use custom compress format and compress quality **/
     public DiskLruImageCache(Context context, int diskCacheSize,
                              Bitmap.CompressFormat compressFormat, int quality ) {
         try {

@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 
 import com.example.coreDomain.DisplayEntry;
 import com.example.xiaomao.interactor.ReturnResult;
-import com.example.xiaomao.utils.mapper.DispEntryJsonMapper;
 
 import java.util.List;
 
@@ -17,12 +16,11 @@ public class RestApiImpl extends RestApiAdapter {
 
 
     private final Context appContext;
-    private final DispEntryJsonMapper jsonMapper=new DispEntryJsonMapper();
     private RestApi delegate;
 
     // constructor --> use fake net-API
     public RestApiImpl(Context appContext) {
-        if (appContext == null || jsonMapper == null) {
+        if (appContext == null ) {
             throw new IllegalArgumentException("The constructor parameters cannot be null!!!");
         }
         this.appContext = appContext;
@@ -33,7 +31,7 @@ public class RestApiImpl extends RestApiAdapter {
 
     // constructor --> use real net-API, need real API(delegate) input
     public RestApiImpl(Context appContext, RestApi delegate) {
-        if (appContext == null || jsonMapper == null || delegate == null) {
+        if (appContext == null  || delegate == null) {
             throw new IllegalArgumentException("The constructor parameters cannot be null!!!");
         }
         this.appContext = appContext;

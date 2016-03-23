@@ -12,23 +12,23 @@ import rx.Subscriber;
  */
 public class GenericTypeUnitTest {
 
-    interface CanTalk{
+    interface CanTalk {
         void talk();
     }
 
-    class Dog implements CanTalk{
+    class Dog implements CanTalk {
         @Override
         public void talk() {
             System.out.println("dog bark");
         }
     }
-    class Cat implements CanTalk{
+
+    class Cat implements CanTalk {
         @Override
         public void talk() {
             System.out.println("cat miao miao");
         }
     }
-
 
 
     @Test
@@ -39,7 +39,7 @@ public class GenericTypeUnitTest {
 
     @Test
     public void testGeneric() throws Exception {
-        Observable<? extends CanTalk> abser=Observable.create(new Observable.OnSubscribe<CanTalk>() {
+        Observable<? extends CanTalk> abser = Observable.create(new Observable.OnSubscribe<CanTalk>() {
             @Override
             public void call(Subscriber<? super CanTalk> subscriber) {
                 subscriber.onNext(new Dog());
@@ -47,7 +47,7 @@ public class GenericTypeUnitTest {
             }
         });
 
-        abser.subscribe(new  DefaultSubscriber<CanTalk>(){
+        abser.subscribe(new DefaultSubscriber<CanTalk>() {
             @Override
             public void onNext(CanTalk canTalk) {
                 canTalk.talk();
@@ -58,5 +58,11 @@ public class GenericTypeUnitTest {
     }
 
 
+    @Test
+    public void testString() {
+        String aa="http://jlu.edu.cn";
+        System.out.println(aa);
+        System.out.println(aa.replace(".","_"));
+    }
 
 }

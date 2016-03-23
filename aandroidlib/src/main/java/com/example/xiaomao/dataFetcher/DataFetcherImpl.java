@@ -2,12 +2,13 @@ package com.example.xiaomao.dataFetcher;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import com.example.coreDomain.DisplayEntry;
-import com.example.xiaomao.cache.ImageDiskCache;
-import com.example.xiaomao.interactor.ReturnResult;
 import com.example.xiaomao.cache.Cache;
 import com.example.xiaomao.cache.DispEntriesMemoryCache;
+import com.example.xiaomao.cache.ImageDiskCache;
+import com.example.xiaomao.interactor.ReturnResult;
 import com.example.xiaomao.net.RestApi;
 import com.example.xiaomao.net.RestApiImpl;
 
@@ -23,7 +24,7 @@ public class DataFetcherImpl implements DataFetcher {
     Context appContext;
 
 
-    ImageDiskCache imageDiskCache;
+    Cache<String,Drawable> imageDiskCache;
 
     public DataFetcherImpl(Context appContext){
         this.appContext=appContext;
@@ -76,10 +77,12 @@ public class DataFetcherImpl implements DataFetcher {
     public Drawable getImageFromURL(String imageURL) {
         // implement diskLruCache....
         if (imageDiskCache.isCached(imageURL)){
+            Log.i("DDD",imageURL+" is from cache");
             return  imageDiskCache.get(imageURL);
         } else {
             Drawable drawable=restApi.getImageFromURL(imageURL);
             imageDiskCache.put(imageURL,drawable);
+            Log.i("DDD",imageURL+" is from net");
             return drawable;
         }
     }
