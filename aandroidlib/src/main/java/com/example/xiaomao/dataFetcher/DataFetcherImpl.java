@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import com.example.coreDomain.DisplayEntry;
+import com.example.xiaomao.cache.ImageDiskCache;
 import com.example.xiaomao.interactor.ReturnResult;
 import com.example.xiaomao.cache.Cache;
 import com.example.xiaomao.cache.DispEntriesMemoryCache;
@@ -21,10 +22,14 @@ public class DataFetcherImpl implements DataFetcher {
     RestApi restApi;
     Context appContext;
 
+
+    ImageDiskCache imageDiskCache;
+
     public DataFetcherImpl(Context appContext){
         this.appContext=appContext;
         this.memoryListCache=new DispEntriesMemoryCache();
         this.restApi=new RestApiImpl(this.appContext);
+        imageDiskCache=new ImageDiskCache(appContext);
     }
 
     public DataFetcherImpl(Context appContext,RestApi restApi){
@@ -70,7 +75,13 @@ public class DataFetcherImpl implements DataFetcher {
     @Override
     public Drawable getImageFromURL(String imageURL) {
         // implement diskLruCache....
-        return restApi.getImageFromURL(imageURL);
+        if (imageDiskCache.isCached(imageURL)){
+            return  imageDiskCache.get(imageURL);
+        } else {
+            Drawable drawable=restApi.getImageFromURL(imageURL);
+            imageDiskCache.put(imageURL,drawable);
+            return drawable;
+        }
     }
 
 }
