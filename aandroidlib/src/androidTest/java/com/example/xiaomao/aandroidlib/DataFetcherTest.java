@@ -4,13 +4,12 @@ import android.content.Context;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
-import com.example.coreDomain.DisplayEntry;
-import com.example.xiaomao.repository.DataFetcherImpl;
+import com.example.xiaomao.dataFetcher.DataFetcherImpl;
+import com.example.xiaomao.interactor.GetEntriesUseCase;
+import com.example.xiaomao.interactor.ReturnResult;
 import com.example.xiaomao.repository.DataStore;
 import com.example.xiaomao.repository.RemoteDataStore;
 import com.example.xiaomao.utils.subscriber.DefaultSubscriber;
-
-import java.util.List;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -54,10 +53,11 @@ public class DataFetcherTest extends AndroidTestCase {
         Context context=getContext().getApplicationContext();
         DataStore remote=new RemoteDataStore(context);
         remote.getEntriesObs().subscribeOn(Schedulers.io()) // 指定 subscribe() 发生在 IO 线程
-                .observeOn(AndroidSchedulers.mainThread()) .subscribe(new DefaultSubscriber<List<DisplayEntry>>(){
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(new DefaultSubscriber<ReturnResult>(){
             @Override
-            public void onNext(List<DisplayEntry> displayEntries) {
-                Log.i("AAA",""+displayEntries.toString());
+            public void onNext(ReturnResult entriesRET) {
+                GetEntriesUseCase.EntriesResult ret=(GetEntriesUseCase.EntriesResult)entriesRET;
+                Log.i("AAA","getEntriesObs--on next in:"+Thread.currentThread().getName()+"---"+ret.getEntries().toString());
             }
         });
 

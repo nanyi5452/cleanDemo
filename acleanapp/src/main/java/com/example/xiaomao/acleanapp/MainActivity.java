@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         iv1= (ImageView) findViewById(R.id.iv1);
 
 //        testRemoteRepository();
-        testUseCase();
+//        testUseCase();
 
 
     }

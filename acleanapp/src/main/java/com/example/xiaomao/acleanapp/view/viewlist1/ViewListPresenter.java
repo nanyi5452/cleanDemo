@@ -22,6 +22,7 @@ public class ViewListPresenter implements Presenter {
 
     public ViewListPresenter(UseCase getEntriesUseCase){
         this.getEntriesUseCase=getEntriesUseCase;
+//        getEntriesUseCase;
     }
 
 

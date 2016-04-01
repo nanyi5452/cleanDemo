@@ -51,8 +51,8 @@ public class ViewListActivity extends AppCompatActivity {
         usecase=new GetEntriesUseCase(new JobExecutor(),new UIThread(),remote);
 
         presenter=new ViewListPresenter(usecase);
-        presenter.setView(entriesView);
         presenter.initialize();
+        presenter.setView(entriesView);
     }
 
     private void initViews() {
