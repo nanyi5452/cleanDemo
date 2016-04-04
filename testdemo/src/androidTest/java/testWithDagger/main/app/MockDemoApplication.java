@@ -15,3 +15,4 @@ public class MockDemoApplication extends DemoApplication {
     }
 
 }
+

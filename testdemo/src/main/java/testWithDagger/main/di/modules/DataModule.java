@@ -17,4 +17,9 @@ public class DataModule {
     @Singleton
     public MyDataSource getDataSource(){return new NetDataSource();}
 
+//    @Provides
+//    @Singleton
+//    @Named("local")
+//    public MyDataSource getLocalDataSource(){return new LocalDataSource();}
+
 }

@@ -7,21 +7,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="testWithDagger.main.MainActivity">
+    tools:context="testWithDagger.main.dagger.demo.Dagger2Activity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/main_tv"
-        android:text="Hello World!" />
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bn_jump"
-        android:text="go to dagger2"
-        android:layout_marginTop="100dp"
-        android:layout_below="@id/main_tv"
+        android:text="hello dagger2!"
+        android:id="@+id/dagger_tv"
         />
+
 </RelativeLayout>
