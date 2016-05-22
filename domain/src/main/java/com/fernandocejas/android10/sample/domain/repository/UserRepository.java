@@ -34,4 +34,7 @@ public interface UserRepository {
    * @param userId The user id used to retrieve user data.
    */
   Observable<User> user(final int userId);
+
+
+
 }

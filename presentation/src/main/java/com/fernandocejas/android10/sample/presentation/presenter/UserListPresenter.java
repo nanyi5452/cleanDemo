@@ -130,5 +130,6 @@ public class UserListPresenter implements Presenter {
     @Override public void onNext(List<User> users) {
       UserListPresenter.this.showUsersCollectionInView(users);
     }
+
   }
 }
